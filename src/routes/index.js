@@ -10,9 +10,9 @@ const compression = require('compression');//M
 require("express-async-errors");
 const {ErrorMiddleware, NotFoundMiddleware} = require('../middlewares');
 
-module.exports = function({HomeRoutes}){
+module.exports = function({HomeRoutes, UserRoutes, IdeaRoutes, CommentRoutes}){
     const router = express.Router();
-    const apiRoutes= express.Router();
+    const apiRoutes = express.Router();
 
     apiRoutes
     .use(express.json())
@@ -20,7 +20,11 @@ module.exports = function({HomeRoutes}){
     .use(helmet())
     .use(compression());
 
-    apiRoutes.use("/home", HomeRoutes)
+    apiRoutes.use("/home", HomeRoutes);
+    apiRoutes.use("/user", UserRoutes);
+    apiRoutes.use("/idea", IdeaRoutes);
+    apiRoutes.use("/comment", CommentRoutes);
+    
 
     router.use("/v1/api", apiRoutes); //todos los empoint va a tener esto /v1/api
 
