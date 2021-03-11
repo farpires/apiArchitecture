@@ -11,8 +11,8 @@ class BaseRepository {
         return await this.model.find();
     }
 
-    async created(entity){
-        return await this.model.created(entity);
+    async create(entity){
+        return await this.model.create(entity);
     }
 
     async update(id,entity){
