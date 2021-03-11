@@ -1,4 +1,4 @@
-const { model, models } = require("mongoose");
+
 
 class BaseServicie {
     constructor(repository){

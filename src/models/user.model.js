@@ -24,6 +24,9 @@ UserSchema.methods.toJSON = function(){
 }
 
 UserSchema.methods.comparePasswords = function(password){
+    console.log('adentro del model');
+    console.log(password);
+    console.log(this.password);
     return compareSync(password, this.password);
 }
 // me todos agregado al schema de mongo -----------
