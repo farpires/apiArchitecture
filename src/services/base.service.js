@@ -12,9 +12,7 @@ class BaseServicie {
             error.message = "id must be sent";
             throw error;
         }
-        
         const currentEntity = await this.repository.get(id);
-
         if (!currentEntity) {
             const error = new Error();
             error.status = 400;

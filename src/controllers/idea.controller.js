@@ -32,19 +32,20 @@ class IdeaController {
 
     async delete(req,res){
         const { ideaId } = req.params;
-        const deletedIdea = await _userService.delete(ideaId);
+        const deletedIdea = await _ideaService.delete(ideaId);
+    
         return res.send(deletedIdea);
 
     }
 
     async getUserIdeas(req,res){
-        const { userIde } = req.params
+        const { userId } = req.params
         const ideas = await _ideaService.getUserIdeas(userId)
         return res.send(ideas);
     }
     async upvoteIdea(req,res){
         const {ideaId} = req.params;
-        const idea = await _ideaService.updvoteIdea(ideaId)
+        const idea = await _ideaService.upvoteIdea(ideaId)
         return res.send(idea);
     } 
 
