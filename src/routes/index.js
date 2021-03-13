@@ -9,7 +9,9 @@ const helmet = require('helmet');//M
 const compression = require('compression');//M
 require("express-async-errors");
 const {ErrorMiddleware, NotFoundMiddleware} = require('../middlewares');
-
+const swaggerUI = require('swagger-ui-express');
+const {SWAGGER_PATH} = require('../config');
+const swaggerDocument = require(SWAGGER_PATH);
 module.exports = function({
     HomeRoutes, 
     UserRoutes, 
@@ -34,6 +36,7 @@ module.exports = function({
     
 
     router.use("/v1/api", apiRoutes); //todos los empoint va a tener esto /v1/api
+    router.use("/api-docs",swaggerUI.serve,swaggerUI.setup(swaggerDocument));
 
     router.use(NotFoundMiddleware);
     router.use(ErrorMiddleware);
